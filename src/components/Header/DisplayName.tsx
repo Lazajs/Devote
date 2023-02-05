@@ -1,10 +1,23 @@
-import Image from "next/image"
+'use client'
 
-export default function ClientElements () {
+import {usePathname} from 'next/navigation'
+import { useSession, signIn, signOut } from "next-auth/react"
+import { Icons } from "../Icons"
+
+const {Out, In} = Icons
+
+export default function DisplayName () {
+  const pathname = usePathname()
+  const {data} = useSession()
+
   return (
     <>
-      <h2 className="text-2xl text-center">{'Be a developer'}</h2>
-      <Image className="block m-auto mt-10 md:absolute md:top-2 md:left-8 z-10" width={50} height={50} src={'/images/signin.svg'} alt='account'/>
+      <h2 className="text-2xl text-center text-textBlack font-bold"> {data?.user?.name ? data.user?.name : 'Be a developer'}</h2>
+      {!(pathname !== '/') && (data?.user === undefined ? 
+          <In className="block m-auto mt-10 md:absolute md:top-2 md:left-8 z-10 cursor-pointer" onClick={()=> signIn()}  />
+            :
+          <Out className="block m-auto mt-10 md:absolute md:top-2 md:left-8 z-10 cursor-pointer" onClick={()=> signOut()} />
+      )}
     </>
   )
 }

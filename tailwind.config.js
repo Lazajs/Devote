@@ -18,7 +18,8 @@ module.exports = {
         decoration: '#8F8681',
         textBlack: '#1C0707',
         textWhite: 'rgba(255, 255, 255, 0.82)',
-        svgFill: '#d2dbed'
+        svgFill: '#d2dbed',
+        negative: '#FF3636'
 
       }
     },
