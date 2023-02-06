@@ -18,7 +18,7 @@ export interface User {
 }
 
 export interface FormError {
-  from: 'username' | 'password' | 'all' | 'none',
+  from: 'username' | 'password' | 'all' | 'none' | 'confirmed',
   message?: string
 }
 
