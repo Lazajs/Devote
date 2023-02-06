@@ -2,9 +2,6 @@
 const nextConfig = {
   experimental: {
     appDir: true,
-  },
-  api: {
-    externalResolver: true
   }
 }
 

@@ -16,3 +16,9 @@ export interface User {
   reminders?: any, //put reminders
   notes?: any, //put notes
 }
+
+export interface FormError {
+  from: 'username' | 'password' | 'all' | 'none',
+  message?: string
+}
+

@@ -28,10 +28,11 @@ export const authOptions: NextAuthOptions = {
           body: JSON.stringify({...credentials})
         })
 
-        const user = await res.json()
-        console.log(user)
-        if (user) return user
-        else return null
+        if (res.ok) {
+          const user = await res.json()
+          if (user) return user
+        }
+        return null
       }
     })
   ],
@@ -40,7 +41,7 @@ export const authOptions: NextAuthOptions = {
     maxAge: 30 * 24 * 60 * 60,
   },
   pages: {
-    signIn: '/auth/signin'
+    signIn: '/auth/signin',
   },
    callbacks: {
     async session({ session, token }) {

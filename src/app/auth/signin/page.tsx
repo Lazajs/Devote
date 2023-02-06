@@ -3,11 +3,7 @@
 import { SyntheticEvent, useState } from "react"
 import { signIn } from "next-auth/react"
 import Form from "@/components/Form"
-
-interface FormError {
-  from: 'username' | 'password' | 'none',
-  message?: string
-}
+import type { FormError } from "types"
 
 export default function Login () {
   const [username, setUsername] = useState('')
