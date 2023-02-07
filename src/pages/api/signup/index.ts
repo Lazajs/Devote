@@ -17,17 +17,19 @@ export default async function handler( req: NextApiRequest, response: NextApiRes
           const passwordHash = bcrypt.hashSync(password, 10)
           delete body.password
 
-        const asyncTask = async ():Promise<SignDataFromDB | null> => {
+        const asyncTask = async ():Promise<SignDataFromDB | null> => { //Must populate notes and reminders
           try {
             await dbConnect()
             const newUser = new User({...body, passwordHash})
-            const found = await User.findOne({username: newUser.username})
+            const found = await User.findOne({name: newUser.name})
             if (!found) {
               const dbData = await newUser.save()
               const {_id, __v, ...all} = dbData._doc
-              return all
-            } else return null
+              return {...all, id: _id}
+            } 
+            return null
           } catch(err) {
+            console.log(err)
             return null
           }
         }

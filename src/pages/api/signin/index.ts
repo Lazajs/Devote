@@ -13,14 +13,14 @@ export default function handler (req: NextApiRequest, response: NextApiResponse)
       const {password, username} = body
       delete body?.from
 
-      const asyncTask = async ():Promise<SignDataFromDB | null> =>{
+      const asyncTask = async ():Promise<SignDataFromDB | null> =>{ // must populate notes and reminders
         try {
           await dbConnect()
-          const userFound = await User.findOne({username})
+          const userFound = await User.findOne({name: username})
           if (userFound) {
             const isOk = bcrypt.compareSync(password, userFound.passwordHash)
             if (isOk) {
-              const {_id, __v, ...all} = userFound
+              const {_id, __v, ...all} = userFound._doc
               return all
             }
           }
@@ -40,7 +40,7 @@ export default function handler (req: NextApiRequest, response: NextApiResponse)
             response.status(401).end()
             return resolve()
           }
-        })
+        }).catch(console.log)
       } else {
         response.status(400).end()
         return resolve()

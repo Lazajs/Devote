@@ -6,11 +6,11 @@ export interface SignData {
 
 export interface SignDataFromDB extends SignData{
   __id: string,
-  _v: number
+  _v: number,
 }
 
 export interface User {
-  username: string,
+  name: string,
   id: string,
   passwordHash: string,
   reminders?: any, //put reminders
@@ -18,7 +18,7 @@ export interface User {
 }
 
 export interface FormError {
-  from: 'username' | 'password' | 'all' | 'none' | 'confirmed',
+  from: 'name' | 'password' | 'all' | 'none' | 'confirmed',
   message?: string
 }
 
