@@ -20,6 +20,8 @@ export default async function handler( req: NextApiRequest, response: NextApiRes
         const asyncTask = async ():Promise<SignDataFromDB | null> => { //Must populate notes and reminders
           try {
             await dbConnect()
+            body.name = body.username
+            delete body.username
             const newUser = new User({...body, passwordHash})
             const found = await User.findOne({name: newUser.name})
             if (!found) {
