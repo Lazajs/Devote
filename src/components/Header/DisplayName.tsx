@@ -12,7 +12,7 @@ export default function DisplayName () {
 
   return (
     <>
-      <h2 className="text-2xl text-center text-textBlack font-bold"> {data?.user?.name ? data.user?.name : 'Be a developer'}</h2>
+      <h2 className="text-2xl text-center text-textBlack font-bold"> {data?.user?.userData?.name ? data.user?.userData.name: 'Be a developer'}</h2>
       {!(pathname !== '/') && (data?.user === undefined ? 
           <In className="block m-auto mt-10 md:absolute md:top-2 md:left-8 z-10 cursor-pointer" onClick={()=> signIn()}  />
             :

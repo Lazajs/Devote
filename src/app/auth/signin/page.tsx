@@ -35,7 +35,7 @@ export default function Login () {
       }    
       else {
         setIsLoading(false)
-        setError({from: 'all', message: `Error while trying to Sign Up, your account is already created or your credentials are invalid. (${res?.status})`})
+        setError({from: 'all', message: `Error while trying to Sign In, your credentials may be invalid. (${res?.status})`})
       }
     }
   }

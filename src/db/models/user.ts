@@ -1,10 +1,8 @@
 import mongoose from "mongoose"
 
 const schema = new mongoose.Schema({
-  name: {type: String, required: true},
+  name: {type: String, required: true, unique:true},
   passwordHash: {type: String, required: true},
-  reminders: {type: [String], default: []}, //must be populated by 'remiders'
-  notes: {type: [String], default: []} // must be populated by 'notes'
 })
 
 export default mongoose.models.User || mongoose.model("User", schema)

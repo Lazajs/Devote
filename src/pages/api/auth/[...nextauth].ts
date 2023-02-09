@@ -1,10 +1,9 @@
 import NextAuth, { NextAuthOptions } from "next-auth";
 import { MongooseAdapter } from "@choutkamartin/mongoose-adapter";
 import Credentials from "next-auth/providers/credentials";
-import type {SignData, User} from 'types'
+import type {SignData, ProductData} from 'types'
 import GithubProvider from 'next-auth/providers/github'
-import dbConnect from "@/db/mongoose";
-import user from "@/db/models/user";
+// import dbConnect from "@/db/mongoose";
 
 interface WithPath extends SignData {
   from: 'signin' | 'signup'
@@ -53,7 +52,7 @@ export const authOptions: NextAuthOptions = {
   },
    callbacks: {
     async session({ session, token }) {
-      session.user = token.user as User;
+      session.user = token.user as ProductData;
       return session;
     },
     async jwt({ token, user }) {

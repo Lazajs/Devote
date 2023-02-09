@@ -9,12 +9,16 @@ export interface SignDataFromDB extends SignData{
   _v: number,
 }
 
-export interface User {
-  name: string,
+interface User {
   id: string,
-  passwordHash: string,
-  reminders?: any, //put reminders
-  notes?: any, //put notes
+  name: string,
+  reminders?: any, //must exist later
+  notes?: any //must exist later
+
+}
+export interface ProductData {
+  id: string,
+  userData: User,
 }
 
 export interface FormError {
