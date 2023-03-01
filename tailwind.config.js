@@ -32,6 +32,10 @@ module.exports = {
         big: '3rem',
         medium: '2.4rem',
         text: '1.8rem'
+      },
+      fontWeight: {
+        normal: '400',
+        heavy: '700'
       }
     },
   },

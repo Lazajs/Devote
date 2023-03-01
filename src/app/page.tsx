@@ -8,7 +8,7 @@ export default function Home () {
 
   return (
     <>
-    <Header status={status}/>
+      <Header status={status} name={session?.user?.name}/>
     </>
   )
 }
