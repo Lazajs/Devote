@@ -20,7 +20,18 @@ module.exports = {
         textWhite: 'rgba(255, 255, 255, 0.82)',
         svgFill: '#d2dbed',
         negative: '#FF3636'
-
+      },
+      margin: {
+        small: '16px',
+        medium: '32px',
+        big: '64px',
+        bigger: '128px'
+      },
+      fontSize: {
+        title: '10rem',
+        big: '3rem',
+        medium: '2.4rem',
+        text: '1.8rem'
       }
     },
   },
